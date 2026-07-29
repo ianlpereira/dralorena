@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Template da imagem de compartilhamento. Não é publicado: serve para gerar
+     assets/img/og-image.jpg com a fonte e o logo reais da marca.
+
+     Como regerar (a partir da raiz do projeto, com o servidor local no ar):
+       chrome --headless=new --hide-scrollbars --window-size=1200,630 \
+              --screenshot=og.png http://127.0.0.1:8080/assets/img/_og-template.html
+     Depois converta og.png para JPG e salve como assets/img/og-image.jpg. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>OG</title>
+<style>
+  @font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: block;
+    src: url('../fonts/lora-latin-var.woff2') format('woff2');
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    background: #163b5c; color: #fff;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  .left { position: relative; padding: 76px 64px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+  .mark { position: absolute; left: -170px; bottom: -190px; height: 620px; opacity: .1; }
+  .lockup { position: relative; display: flex; align-items: center; gap: 18px; margin-bottom: 40px; }
+  .lockup img { height: 62px; }
+  .name { font-family: 'Lora', Georgia, serif; font-size: 40px; line-height: 1.05; }
+  .role { font-family: 'Lora', Georgia, serif; font-size: 13px; letter-spacing: .34em;
+          text-transform: uppercase; color: #ddeaf4; margin-top: 8px; }
+  h1 { position: relative; font-family: 'Lora', Georgia, serif; font-weight: 500;
+       font-size: 56px; line-height: 1.14; letter-spacing: -.01em; margin: 0 0 26px; }
+  .crm { position: relative; display: flex; gap: 20px; align-items: center;
+         font-size: 21px; color: #ddeaf4; letter-spacing: .04em; }
+  .crm i { width: 5px; height: 5px; border-radius: 50%; background: #5d84a3; }
+  .right { position: relative; }
+  .right img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+</style>
+</head>
+<body>
+  <div class="left">
+    <img class="mark" src="logo-pulmao-branco.svg" alt="">
+    <div class="lockup">
+      <img src="logo-pulmao-branco.svg" alt="">
+      <div>
+        <div class="name">Dra. Lorena Fecury</div>
+        <div class="role">Pneumologista</div>
+      </div>
+    </div>
+    <h1>Cuidado respiratório<br>em São Luís</h1>
+    <div class="crm"><span>CRM 12367-MA</span><i></i><span>RQE 7421</span></div>
+  </div>
+  <div class="right"><img src="dra-lorena.jpg" alt=""></div>
+</body>
+</html>

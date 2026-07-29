@@ -1,0 +1,1386 @@
+/* ==========================================================================
+   Dra. Lorena Fecury — Pneumologista
+   Identidade visual: Figma "Section 2" (node 38:13)
+   Paleta: #163B5C / #5D84A3 / #DDEAF4 / #FFFFFF · Tipografia: Lora
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Fonte (auto-hospedada, subset latin, variável 400–600)
+   Lora © Cyreal — SIL Open Font License 1.1
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('../fonts/lora-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* --------------------------------------------------------------------------
+   2. Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Cores da marca (valores exatos do Figma) */
+  --navy: #163b5c;
+  --blue: #5d84a3;
+  --sky: #ddeaf4;
+  --white: #fff;
+
+  /* Derivados de UI */
+  --ink: #0f2740;
+  --muted: #4a6480;
+  /* --blue fica reservado a grafismo (ícones, filetes, pontos): sobre branco
+     rende 3,97:1 — suficiente para elemento gráfico, insuficiente para texto
+     pequeno. Para texto em azul usamos este tom mais fechado (5,3:1 no branco,
+     4,8:1 sobre --pattern). */
+  --blue-text: #46708f;
+  --pattern: #f0f5fa;
+  --line: #d3e2ef;
+  --navy-deep: #0e2b45;
+
+  /* Tipografia */
+  --font-display: 'Lora', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+
+  /* Escala fluida */
+  --fs-kicker: clamp(0.66rem, 0.6rem + 0.28vw, 0.8rem);
+  --fs-h1: clamp(2.4rem, 1.55rem + 3.6vw, 4.4rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 1.7vw, 2.6rem);
+  --fs-h3: clamp(1.06rem, 1rem + 0.3vw, 1.22rem);
+  --fs-lead: clamp(1.03rem, 0.97rem + 0.4vw, 1.2rem);
+  --fs-body: clamp(0.97rem, 0.94rem + 0.16vw, 1.04rem);
+  --fs-small: 0.875rem;
+
+  /* Espaço e forma */
+  --container: 1180px;
+  --gutter: clamp(1.25rem, 0.7rem + 2.6vw, 2.5rem);
+  --section-y: clamp(4.5rem, 3rem + 6vw, 8rem);
+  --radius: 10px;
+  --radius-lg: 16px;
+  --header-h: 76px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 59, 92, 0.06), 0 4px 14px rgba(22, 59, 92, 0.05);
+  --shadow-md: 0 2px 6px rgba(22, 59, 92, 0.07), 0 18px 44px rgba(22, 59, 92, 0.1);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   3. Reset e base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.012em;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1.05em;
+  text-wrap: pretty;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--navy);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--sky);
+  color: var(--navy);
+}
+
+/* --------------------------------------------------------------------------
+   4. Utilitários de layout
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+  position: relative;
+}
+
+/* Seções abaixo da dobra: o navegador pula layout/paint até chegarem perto. */
+.section--defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
+.section--sky {
+  background: var(--pattern);
+}
+
+.section__head {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 1.8rem + 2.4vw, 4rem);
+}
+
+.section__head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section__head p {
+  margin-top: 1rem;
+  font-size: var(--fs-lead);
+  color: var(--muted);
+}
+
+/* Kicker — assinatura tipográfica da marca: tracking largo do descritor
+   "Pneumologista" no logo original (~0.4em). */
+.kicker {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-kicker);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--blue-text);
+}
+
+.kicker--rule {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.kicker--rule::after {
+  content: '';
+  flex: 1;
+  max-width: 4.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+.section__head--center .kicker--rule {
+  justify-content: center;
+}
+.section__head--center .kicker--rule::before {
+  content: '';
+  flex: 1;
+  max-width: 4.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 200;
+  padding: 0.7rem 1.2rem;
+  background: var(--navy);
+  color: var(--white);
+  font-size: var(--fs-small);
+  border-radius: 0 0 var(--radius) var(--radius);
+  transform: translate(-50%, -110%);
+  transition: transform 0.2s var(--ease);
+}
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+.ico {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: currentColor;
+}
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   5. Botões
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.92rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease),
+    transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+/* Preenchimento deslizante no hover (apenas transform — sem repaint de layout) */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateY(101%);
+  transition: transform 0.42s var(--ease-out);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateY(0);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary::before {
+  background: var(--blue);
+}
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  box-shadow: var(--shadow-md);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--navy);
+}
+.btn--ghost::before {
+  background: var(--sky);
+}
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--blue);
+}
+
+.btn--light {
+  background: var(--white);
+  color: var(--navy);
+}
+.btn--light::before {
+  background: var(--sky);
+}
+
+.btn--sm {
+  padding: 0.62rem 1.15rem;
+  font-size: 0.875rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   6. Header
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.header.is-stuck {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom-color: var(--line);
+  box-shadow: 0 1px 20px rgba(22, 59, 92, 0.06);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .header.is-stuck {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px) saturate(1.4);
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+}
+
+/* Logotipo: ícone SVG + wordmark em texto real (indexável e nítido) */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+/* A marca redesenhada tem traço mais fino que a anterior, então ganha um
+   pouco mais de corpo para não sumir em tamanho pequeno. */
+.brand__mark {
+  width: auto;
+  height: 38px;
+  flex: none;
+  transition: transform 0.5s var(--ease-out);
+}
+.brand:hover .brand__mark {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.brand__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.brand__role {
+  display: block;
+  margin-top: 0.22em;
+  font-family: var(--font-display);
+  font-size: 0.56rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--blue-text);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 0.4rem + 1.6vw, 2rem);
+}
+
+.nav__link {
+  position: relative;
+  padding-block: 0.35rem;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.25s var(--ease);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--navy);
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after,
+.nav__link[aria-current='true']::after {
+  transform: scaleX(1);
+}
+
+.header__cta {
+  display: none;
+}
+
+/* Botão hambúrguer */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  height: 1.5px;
+  background: var(--navy);
+  transition: transform 0.34s var(--ease), opacity 0.2s linear;
+}
+
+.burger[aria-expanded='true'] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.burger[aria-expanded='true'] span:nth-child(2) {
+  opacity: 0;
+}
+.burger[aria-expanded='true'] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+@media (min-width: 62rem) {
+  .burger {
+    display: none;
+  }
+  .header__cta {
+    display: inline-flex;
+  }
+  /* O CTA dentro do drawer existe só para o mobile; no desktop quem aparece
+     é o .header__cta, senão o botão duplicaria. */
+  .nav > .btn {
+    display: none;
+  }
+}
+
+/* Drawer mobile */
+@media (max-width: 61.99rem) {
+  .nav {
+    position: fixed;
+    inset: var(--header-h) 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.75rem;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.34s var(--ease-out), opacity 0.28s var(--ease),
+      visibility 0.34s;
+  }
+  .nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav__link {
+    padding-block: 0.95rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.02rem;
+  }
+  .nav__link::after {
+    display: none;
+  }
+  .nav .btn {
+    margin-top: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(88svh, 54rem);
+  padding-top: calc(var(--header-h) + clamp(2.5rem, 1rem + 6vw, 5rem));
+  padding-bottom: clamp(3.5rem, 2rem + 6vw, 6rem);
+  overflow: hidden;
+  background: linear-gradient(178deg, var(--pattern) 0%, var(--white) 62%);
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sentinela invisível: quando deixa o viewport, o header assume o estado
+   "grudado". Fica no limiar em que a transição deve acontecer. */
+.scroll-sentinel {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* O nome ocupa toda a largura útil em UMA linha.
+   Calibrado com a métrica real de "Dra. Lorena Fecury" em Lora: a caixa de
+   texto mede ≈8.75× o corpo da fonte. O caso mais apertado é 320px de viewport
+   (gutter no piso de 20px → 280px úteis), que fixa o coeficiente em 9.6vw. Da
+   largura do container para cima (≥1180px) a área útil é constante em 1100px,
+   então o teto de 7.6rem trabalha com ~3% de folga.
+   `white-space: nowrap` garante o requisito de não quebrar mesmo enquanto a
+   fonte de fallback está em uso — e, por não mudar de altura, preserva o CLS. */
+.hero__title {
+  font-size: clamp(1.85rem, 9.6vw, 7.6rem);
+  line-height: 1.02;
+  margin-bottom: 1.4rem;
+  white-space: nowrap;
+}
+
+.hero__lead {
+  max-width: 34rem;
+  font-size: var(--fs-lead);
+  color: var(--muted);
+}
+
+/* Registro profissional — exigência de publicidade médica (CFM) */
+.hero__crm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.hero__crm b {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.hero__crm span[aria-hidden] {
+  color: var(--line);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* Marca brônquica como grafismo de fundo, sangrando pela borda direita.
+   O translateX é percentual da PRÓPRIA largura da marca, então o
+   enquadramento se mantém em qualquer viewport: 54% joga a traqueia (que fica
+   no eixo central da marca simétrica) para fora da tela e deixa visível apenas
+   a ramificação de um dos pulmões — sem a barra dura do tronco cortado. */
+.hero__mark {
+  position: absolute;
+  z-index: 0;
+  /* A traqueia tem topo arredondado e fica visível: o recuo dá folga do header
+     para o corte não parecer que a marca sai de trás dele. */
+  top: 12%;
+  right: 0;
+  width: auto;
+  height: 82%;
+  transform: translateX(34%);
+  color: var(--sky);
+  fill: currentColor;
+  pointer-events: none;
+}
+
+/* Em telas estreitas o hero fica alto e o texto ocupa quase toda a largura.
+   Ancorar a marca pelo topo a jogava para o rodapé do hero, solta e cortada
+   embaixo; aqui ela é centrada verticalmente no bloco de texto — mesma relação
+   do desktop — e sangra mais pela direita para não disputar com a leitura. */
+@media (max-width: 55.99rem) {
+  .hero__mark {
+    top: 50%;
+    bottom: auto;
+    height: min(62%, 26rem);
+    transform: translate(40%, -50%);
+    opacity: 0.55;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Animação assinatura — a marca se desenha
+   O path das ramificações é revelado de cima para baixo (traqueia → brônquios)
+   e os alvéolos florescem em três bandas escalonadas.
+   -------------------------------------------------------------------------- */
+.lf-branch {
+  clip-path: inset(0 0 100% 0);
+  animation: lf-grow 1.5s var(--ease-out) 0.15s forwards;
+}
+
+.lf-alv {
+  opacity: 0;
+  transform: scale(0.4);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lf-bloom 0.75s var(--ease-out) forwards;
+  animation-delay: calc(0.55s + var(--i) * 0.28s);
+}
+
+@keyframes lf-grow {
+  to {
+    clip-path: inset(0 0 -2% 0);
+  }
+}
+
+@keyframes lf-bloom {
+  60% {
+    transform: scale(1.09);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Entrada em cascata do conteúdo do hero (CSS puro: não depende do JS,
+   para não atrasar o LCP) */
+.hero__reveal > * {
+  animation: hero-in 0.85s var(--ease-out) backwards;
+}
+.hero__reveal > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.hero__reveal > *:nth-child(2) {
+  animation-delay: 0.14s;
+}
+.hero__reveal > *:nth-child(3) {
+  animation-delay: 0.23s;
+}
+.hero__reveal > *:nth-child(4) {
+  animation-delay: 0.32s;
+}
+.hero__reveal > *:nth-child(5) {
+  animation-delay: 0.41s;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Reveal on scroll (classe aplicada pelo IntersectionObserver)
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sem JS: nada fica escondido. */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. Sobre
+   -------------------------------------------------------------------------- */
+.about__grid {
+  display: grid;
+  gap: clamp(2.5rem, 1rem + 5vw, 4.5rem);
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .about__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.about__figure {
+  position: relative;
+  margin: 0;
+  max-width: 24rem;
+}
+
+.about__figure img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--sky);
+}
+
+.about__figure figcaption {
+  margin-top: 1rem;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+.creds {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.creds li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+/* Terminação circular — vocabulário gráfico do logo (alvéolo) */
+.creds li::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.62em;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+/* --------------------------------------------------------------------------
+   11. Áreas de atuação
+   -------------------------------------------------------------------------- */
+.cards {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.card {
+  padding: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--sky);
+  box-shadow: var(--shadow-md);
+}
+
+.card__icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.15rem;
+  color: var(--blue);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: color 0.4s var(--ease), transform 0.5s var(--ease-out);
+}
+
+.card:hover .card__icon {
+  color: var(--navy);
+  transform: scale(1.06);
+}
+
+/* Traço que se redesenha no hover */
+.card__icon .draw {
+  stroke-dasharray: var(--len, 200);
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.75s var(--ease-out);
+}
+
+.card:hover .card__icon .draw {
+  animation: redraw 0.9s var(--ease-out);
+}
+
+@keyframes redraw {
+  from {
+    stroke-dashoffset: var(--len, 200);
+  }
+}
+
+.card__icon .dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.card h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 0.55rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. Como é a consulta (timeline)
+   -------------------------------------------------------------------------- */
+.steps {
+  display: grid;
+  gap: clamp(1.75rem, 1rem + 2vw, 2.5rem);
+  counter-reset: step;
+}
+
+@media (min-width: 48rem) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  position: relative;
+  counter-increment: step;
+  padding-top: 2.9rem;
+}
+
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--blue-text);
+}
+
+/* Linha do tempo com terminal circular */
+.step::after {
+  content: '';
+  position: absolute;
+  top: 1.85rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+.step:last-child::after {
+  background: linear-gradient(90deg, var(--line) 0 45%, transparent 45%);
+}
+
+.step h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.step__bullet {
+  position: absolute;
+  top: calc(1.85rem - 4px);
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--blue);
+  transition: background-color 0.4s var(--ease), transform 0.4s var(--ease-out);
+}
+
+.step:hover .step__bullet {
+  background: var(--blue);
+  transform: scale(1.25);
+}
+
+/* --------------------------------------------------------------------------
+   13. Locais de atendimento
+   -------------------------------------------------------------------------- */
+.places {
+  display: grid;
+  gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+}
+
+@media (min-width: 48rem) {
+  .places {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.place {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 1.2rem + 1.2vw, 2.4rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.place:hover {
+  border-color: var(--sky);
+  box-shadow: var(--shadow-md);
+}
+
+.place h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  margin-bottom: 1.25rem;
+}
+
+.place__list {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.place__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+
+.place__list .ico {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.28em;
+  color: var(--blue);
+}
+
+.place__list a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s var(--ease);
+}
+
+.place__list a:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.place__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   14. FAQ
+   -------------------------------------------------------------------------- */
+.faq {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  color: var(--navy);
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.25s var(--ease);
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary:hover {
+  color: var(--blue-text);
+}
+
+/* Indicador + / − construído em CSS */
+.faq__sign {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.3em;
+}
+
+.faq__sign::before,
+.faq__sign::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--blue);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.faq__sign::after {
+  transform: rotate(90deg);
+}
+
+.faq__item[open] .faq__sign::after {
+  transform: rotate(0deg);
+}
+
+/* Expansão suave: grid-template-rows 0fr → 1fr é animável. */
+.faq__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--ease-out);
+}
+
+.faq__item[open] .faq__body {
+  grid-template-rows: 1fr;
+}
+
+.faq__body > div {
+  overflow: hidden;
+}
+
+.faq__body p {
+  padding-bottom: 1.5rem;
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+/* --------------------------------------------------------------------------
+   15. CTA final
+   -------------------------------------------------------------------------- */
+.cta {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+}
+
+.cta__mark {
+  position: absolute;
+  top: -30%;
+  right: -8vw;
+  height: 175%;
+  width: auto;
+  color: var(--white);
+  fill: currentColor;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: var(--fs-h2);
+  margin-bottom: 1.1rem;
+}
+
+.cta p {
+  color: var(--sky);
+  font-size: var(--fs-lead);
+  margin-bottom: 2.25rem;
+}
+
+/* Sobre fundo navy, o descritor usa o azul-bebê da marca — mesma aplicação
+   da variante "Logomarca fundo escuro azul bebê" do guia. */
+.cta .kicker {
+  color: var(--sky);
+}
+
+/* --------------------------------------------------------------------------
+   16. Footer — colunas com divisores verticais finos,
+   mesmo padrão do rodapé da receita médica.
+   -------------------------------------------------------------------------- */
+.footer {
+  background: var(--navy-deep);
+  color: var(--sky);
+  font-size: var(--fs-small);
+}
+
+.footer__grid {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: clamp(3rem, 2rem + 3vw, 4.5rem);
+}
+
+@media (min-width: 52rem) {
+  .footer__grid {
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 0;
+  }
+  .footer__col + .footer__col {
+    padding-left: clamp(1.75rem, 1rem + 2.5vw, 3.5rem);
+    border-left: 1px solid rgba(221, 234, 244, 0.22);
+  }
+  .footer__col + .footer__col:nth-child(2) {
+    margin-left: clamp(1.75rem, 1rem + 2.5vw, 3.5rem);
+  }
+}
+
+.footer .brand {
+  color: var(--white);
+}
+
+.footer .brand__mark {
+  width: auto;
+  height: 42px;
+}
+
+.footer .brand__role {
+  color: var(--sky);
+}
+
+.footer h2 {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 1.1rem;
+  font-weight: 500;
+}
+
+.footer__col > p {
+  margin-top: 1.4rem;
+  color: rgba(221, 234, 244, 0.78);
+  max-width: 24rem;
+}
+
+.footer__list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.footer__list a,
+.footer__list span {
+  color: rgba(221, 234, 244, 0.86);
+  text-decoration: none;
+  transition: color 0.25s var(--ease);
+}
+
+.footer__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.footer__list a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgba(221, 234, 244, 0.16);
+  color: rgba(221, 234, 244, 0.62);
+  font-size: 0.8rem;
+}
+
+.footer__bottom p {
+  margin: 0;
+  max-width: 46rem;
+}
+
+/* Links da faixa inferior (crédito, etc.): sem esta regra herdariam o navy do
+   `a` global e ficariam ilegíveis sobre o rodapé escuro. */
+.footer__bottom a {
+  color: rgba(221, 234, 244, 0.82);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.25s var(--ease);
+}
+
+.footer__bottom a:hover,
+.footer__bottom a:focus-visible {
+  color: var(--white);
+}
+
+/* Botão flutuante de WhatsApp (mobile) */
+.fab {
+  position: fixed;
+  z-index: 90;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.15rem;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(14, 43, 69, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(120%);
+  transition: transform 0.4s var(--ease-out), opacity 0.3s var(--ease),
+    visibility 0.4s;
+}
+
+.fab.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.fab .ico {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 62rem) {
+  .fab {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17. Movimento reduzido — respeita a preferência do sistema
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal,
+  .hero__reveal > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .lf-branch {
+    clip-path: none !important;
+  }
+
+  .lf-alv {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   18. Impressão
+   -------------------------------------------------------------------------- */
+@media print {
+  .header,
+  .fab,
+  .hero__mark,
+  .cta__mark,
+  .hero__actions,
+  .place__actions {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+  }
+
+  .faq__body {
+    grid-template-rows: 1fr !important;
+  }
+}

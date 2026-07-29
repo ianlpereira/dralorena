@@ -1,0 +1,24 @@
+{
+  "name": "Dra. Lorena Fecury — Pneumologista",
+  "short_name": "Dra. Lorena Fecury",
+  "description": "Pneumologista em São Luís (MA). Asma, DPOC, apneia do sono e tosse crônica.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#163b5c",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
