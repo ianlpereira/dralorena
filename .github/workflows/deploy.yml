@@ -1,4 +1,4 @@
-name: Deploy dashboard to GitHub Pages
+name: Deploy site to GitHub Pages
 
 on:
   push:
@@ -19,19 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
-        env:
-          GITHUB_PAGES: true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/web/dist
+          path: .
 
   deploy:
     needs: build
