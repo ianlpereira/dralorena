@@ -1214,6 +1214,25 @@ ol {
   color: var(--sky);
 }
 
+.cta__choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cta__choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.cta__choice h3 {
+  color: var(--white);
+  font-size: var(--fs-h3);
+}
+
 /* --------------------------------------------------------------------------
    16. Footer — colunas com divisores verticais finos,
    mesmo padrão do rodapé da receita médica.
@@ -1371,6 +1390,73 @@ ol {
   .fab {
     display: none;
   }
+}
+
+/* Popover "escolha a clínica" — aberto pelos botões genéricos de WhatsApp
+   (nav mobile, header__cta, hero, fab), que por padrão levam à Premium. */
+.wa-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.wa-picker[hidden] {
+  display: none;
+}
+
+.wa-picker__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 43, 69, 0.55);
+}
+
+.wa-picker__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 22rem;
+  padding: 2rem 1.75rem 1.75rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.wa-picker__panel p {
+  margin: 0 0 1.25rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.wa-picker__panel .btn + .btn {
+  margin-top: 0.75rem;
+}
+
+.wa-picker__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: inline-flex;
+  padding: 0.4rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.wa-picker__close:hover,
+.wa-picker__close:focus-visible {
+  color: var(--navy);
+  background: var(--pattern);
+}
+
+.wa-picker__close .ico {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 /* --------------------------------------------------------------------------

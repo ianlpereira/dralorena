@@ -105,12 +105,14 @@
         },
         {
           "@type": "MedicalClinic",
-          "name": "Itorax",
+          "name": "Itórax",
           "telephone": "+55-98-3013-9696",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Rua das Araras, 11, Jardim Renascença",
             "addressLocality": "São Luís",
             "addressRegion": "MA",
+            "postalCode": "65075-840",
             "addressCountry": "BR"
           }
         }
@@ -151,32 +153,27 @@
         {
           "@type": "Question",
           "name": "Como agendo uma consulta?",
-          "acceptedAnswer": { "@type": "Answer", "text": "O agendamento é feito diretamente com a secretaria da clínica de sua preferência, pelo WhatsApp ou por telefone. Nas duas unidades o horário é confirmado no momento do contato." }
+          "acceptedAnswer": { "@type": "Answer", "text": "O agendamento é feito diretamente pelo WhatsApp ou telefone da clínica de sua preferência." }
         },
         {
           "@type": "Question",
-          "name": "O atendimento é por convênio ou particular?",
-          "acceptedAnswer": { "@type": "Answer", "text": "As formas de atendimento variam conforme a clínica e o convênio. Consulte a secretaria pelo WhatsApp antes de agendar para confirmar a cobertura do seu plano." }
+          "name": "Aceita plano de saúde para consultas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Não. As consultas são realizadas exclusivamente de forma particular." }
         },
         {
           "@type": "Question",
           "name": "O que devo levar na primeira consulta?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Documento com foto, carteirinha do convênio quando houver, a lista das medicações que você usa e os exames anteriores, principalmente exames de imagem do tórax e provas de função pulmonar." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Caso tenha exames, leve-os à consulta, especialmente aqueles relacionados à sua saúde respiratória. Tenha em mãos as informações sobre todos os medicamentos que utiliza. Se utiliza medicamentos inalatórios, leve também seu dispositivo inalatório." }
         },
         {
           "@type": "Question",
           "name": "Quando devo procurar um pneumologista?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Procure avaliação diante de falta de ar, tosse que persiste por semanas, chiado no peito, ronco com pausas na respiração durante o sono, cansaço ao esforço ou infecções respiratórias de repetição." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Se você tem falta de ar, cansaço aos esforços, tosse por mais de 3 semanas, chiado no peito, ronco com pausas na respiração ou infecções respiratórias de repetição, é hora de buscar avaliação com pneumologista." }
         },
         {
           "@type": "Question",
-          "name": "A espirometria é feita na própria consulta?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A espirometria é solicitada quando há indicação clínica e realizada em serviço habilitado. Confirme com a secretaria a disponibilidade do exame na unidade em que você será atendido." }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto tempo dura a consulta?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A primeira consulta é mais longa, porque inclui a história clínica completa e o exame físico. O tempo varia conforme o caso e a necessidade de revisar exames já realizados." }
+          "name": "Como é a primeira consulta?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Na primeira consulta, é realizada uma avaliação detalhada da sua história de saúde, dos seus sintomas e dos exames já realizados para definir a melhor abordagem para o seu caso." }
         }
       ]
     }
@@ -217,12 +214,12 @@
       <a class="nav__link" href="#consulta">A consulta</a>
       <a class="nav__link" href="#locais">Onde atendo</a>
       <a class="nav__link" href="#perguntas">Perguntas</a>
-      <a class="btn btn--primary btn--sm" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
+      <a class="btn btn--primary btn--sm" data-wa-open href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
         <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar
       </a>
     </nav>
 
-    <a class="btn btn--primary btn--sm header__cta" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
+    <a class="btn btn--primary btn--sm header__cta" data-wa-open href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
       <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar consulta
     </a>
   </div>
@@ -285,7 +282,7 @@
         <h1 class="hero__title" id="hero-titulo">Dra. Lorena Fecury</h1>
         <p class="hero__lead">Cuidado respiratório em São Luís, do diagnóstico ao acompanhamento de longo prazo — com tempo para ouvir a sua história e explicar cada conduta.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
+          <a class="btn btn--primary" data-wa-open href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
             <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar pelo WhatsApp
           </a>
           <a class="btn btn--ghost" href="#atuacao">Áreas de atuação</a>
@@ -312,15 +309,16 @@
           <span class="kicker kicker--rule">Sobre</span>
           <h2 id="sobre-titulo">Medicina respiratória com escuta e continuidade</h2>
         </div>
-        <!-- REVISAR: texto a ser validado pela Dra. Lorena (formação, títulos, abordagem) -->
-        <p>Médica formada em Medicina com residência em Pneumologia, a Dra. Lorena Fecury atende adultos com doenças respiratórias crônicas e agudas em São Luís, no Maranhão.</p>
-        <p>A condução dos casos parte de uma avaliação clínica detalhada: entender há quanto tempo os sintomas existem, o que os desencadeia e como afetam o dia a dia costuma revelar mais do que qualquer exame isolado. A partir daí, exames complementares são solicitados apenas quando mudam a conduta.</p>
+        <p>Médica graduada pelo Centro Universitário Metropolitano da Amazônia (UNIFAMAZ) (2016–2021). Especialista em Clínica Médica pela residência médica no Hospital UDI Rede D'Or (2022–2024). Especialista em Pneumologia pela residência médica no Hospital Universitário da Universidade Federal do Maranhão (HU-UFMA) (2024–2026).</p>
+        <p>A Dra. Lorena Fecury atende adultos a partir de 18 anos.</p>
+        <p>A condução dos casos parte de uma avaliação clínica detalhada: entender há quanto tempo os sintomas existem, o que os desencadeia e como afetam o dia a dia costuma revelar mais do que qualquer exame isolado. Com base na avaliação clínica, são indicados os exames complementares mais adequados para cada caso, de acordo com a necessidade de investigação, diagnóstico e acompanhamento.</p>
         <p>O acompanhamento é pensado para o longo prazo — doenças como asma e DPOC exigem ajustes ao longo do tempo, e cada retorno serve para revisar o que funcionou e o que precisa mudar.</p>
 
         <ul class="creds">
           <li>Registro no Conselho Regional de Medicina do Maranhão — CRM 12367-MA</li>
+          <li>Registro de Qualificação de Especialista em Clínica Médica — RQE 6133</li>
           <li>Registro de Qualificação de Especialista em Pneumologia — RQE 7421</li>
-          <li>Atendimento em duas unidades em São Luís: Clínicas Premium e Itorax</li>
+          <li>Atendimento em 2 locais em São Luís: Clínicas Premium e Itórax</li>
         </ul>
       </div>
     </div>
@@ -413,7 +411,31 @@
             <circle class="dot" cx="35" cy="40" r="3.2"/>
           </svg>
           <h3>Avaliação pré-operatória</h3>
-          <p>Análise do risco respiratório antes de cirurgias, com orientações para reduzir a chance de complicações no pós-operatório.</p>
+          <p>Análise do risco respiratório antes de cirurgias, com orientações para reduzir o risco de complicações no pós-operatório.</p>
+        </li>
+
+        <li class="card reveal" style="--i:7">
+          <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path class="draw" style="--len:11" d="M13 27h11"/>
+            <path class="draw" style="--len:6" d="M24 24v6"/>
+            <path class="draw" style="--len:11" d="M27 20c3-2 4-6 2-10"/>
+            <circle class="draw" style="--len:94" cx="24" cy="24" r="15" fill="none"/>
+            <path class="draw" style="--len:31" d="M13 13 35 35"/>
+            <circle class="dot" cx="13" cy="27" r="1.6"/>
+          </svg>
+          <h3>Cessação de tabagismo</h3>
+          <p>Avaliação do grau de dependência da nicotina, orientação para interrupção do tabagismo, indicação de tratamento medicamentoso quando necessário e reavaliação da resposta ao tratamento.</p>
+        </li>
+
+        <li class="card reveal" style="--i:8">
+          <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path class="draw" style="--len:16" d="M19 17a10 10 0 0 1 0 14"/>
+            <path class="draw" style="--len:27" d="M26 12a17 17 0 0 1 0 24"/>
+            <path class="draw" style="--len:38" d="M33 7a24 24 0 0 1 0 34"/>
+            <circle class="dot" cx="19" cy="24" r="3.4"/>
+          </svg>
+          <h3>Nódulos Pulmonares</h3>
+          <p>Avaliação de nódulos pulmonares identificados em exames de imagem, definição da necessidade de investigação complementar e orientação sobre o acompanhamento mais adequado para cada caso.</p>
         </li>
       </ul>
     </div>
@@ -437,17 +459,17 @@
         <li class="step reveal" style="--i:1">
           <span class="step__bullet" aria-hidden="true"></span>
           <h3>Exame físico</h3>
-          <p>Avaliação clínica completa, com ausculta pulmonar, verificação dos sinais vitais e da oxigenação.</p>
+          <p>Exame físico completo e direcionado, contribuindo para uma avaliação clínica criteriosa e para a definição da conduta mais adequada.</p>
         </li>
         <li class="step reveal" style="--i:2">
           <span class="step__bullet" aria-hidden="true"></span>
-          <h3>Exames, se necessário</h3>
-          <p>Quando há indicação, são solicitados espirometria, exames de imagem ou polissonografia — sempre com um objetivo definido.</p>
+          <h3>Exames complementares</h3>
+          <p>Os exames complementares são indicados conforme a necessidade de cada caso, contribuindo para a investigação diagnóstica, o planejamento terapêutico e o acompanhamento da evolução clínica.</p>
         </li>
         <li class="step reveal" style="--i:3">
           <span class="step__bullet" aria-hidden="true"></span>
           <h3>Plano de cuidado</h3>
-          <p>Definição da conduta, orientações por escrito e combinação do retorno para revisar a resposta ao tratamento.</p>
+          <p>Definição da conduta, orientações individualizadas e programação do acompanhamento conforme a necessidade de cada caso.</p>
         </li>
       </ol>
     </div>
@@ -459,7 +481,7 @@
       <div class="section__head section__head--center reveal">
         <span class="kicker kicker--rule">Onde atendo</span>
         <h2 id="locais-titulo">Duas unidades em São Luís</h2>
-        <p>Escolha a unidade mais conveniente e fale direto com a secretaria para agendar.</p>
+        <p>Escolha a unidade de sua preferência e agende sua consulta pelos contatos abaixo.</p>
       </div>
 
       <div class="places">
@@ -472,7 +494,11 @@
             </li>
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-tel"></use></svg>
-              <span><a href="tel:+559821069900">(98) 2106-9900</a> · <a href="tel:+5598992407110">(98) 99240-7110</a></span>
+              <span><a href="tel:+559821069900">(98) 2106-9900</a></span>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>
+              <span><a href="tel:+5598992407110">(98) 99240-7110</a></span>
             </li>
           </ul>
           <div class="place__actions">
@@ -484,23 +510,26 @@
         </article>
 
         <article class="place reveal" style="--i:1">
-          <h3>Itorax</h3>
+          <h3>Itórax</h3>
           <ul class="place__list">
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>
-              <!-- PENDENTE: endereço completo da Itorax (não consta no guia de marca) -->
-              <span>São Luís — MA<br>Endereço completo a confirmar com a secretaria.</span>
+              <span>Rua das Araras, 11, Jardim Renascença<br>São Luís — MA · CEP 65075-840</span>
             </li>
             <li>
               <svg class="ico" aria-hidden="true"><use href="#i-tel"></use></svg>
-              <span><a href="tel:+559830139696">(98) 3013-9696</a> · <a href="tel:+5598991557793">(98) 99155-7793</a></span>
+              <span><a href="tel:+559830139696">(98) 3013-9696</a></span>
+            </li>
+            <li>
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>
+              <span><a href="tel:+5598991557793">(98) 99155-7793</a></span>
             </li>
           </ul>
           <div class="place__actions">
-            <a class="btn btn--primary btn--sm" href="https://wa.me/5598991557793?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20Itorax." target="_blank" rel="noopener">
+            <a class="btn btn--primary btn--sm" href="https://wa.me/5598991557793?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20It%C3%B3rax." target="_blank" rel="noopener">
               <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>WhatsApp
             </a>
-            <a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Itorax+S%C3%A3o+Lu%C3%ADs+MA" target="_blank" rel="noopener">Ver no mapa</a>
+            <a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+das+Araras+11+Jardim+Renasce%C3%A7a+S%C3%A3o+Lu%C3%ADs+MA" target="_blank" rel="noopener">Ver no mapa</a>
           </div>
         </article>
       </div>
@@ -518,32 +547,27 @@
       <div class="faq reveal">
         <details class="faq__item">
           <summary>Como agendo uma consulta?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>O agendamento é feito diretamente com a secretaria da clínica de sua preferência, pelo WhatsApp ou por telefone. Nas duas unidades o horário é confirmado no momento do contato.</p></div></div>
+          <div class="faq__body"><div><p>O agendamento é feito diretamente pelo WhatsApp ou telefone da clínica de sua preferência.</p></div></div>
         </details>
 
         <details class="faq__item">
-          <summary>O atendimento é por convênio ou particular?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>As formas de atendimento variam conforme a clínica e o convênio. Consulte a secretaria pelo WhatsApp antes de agendar para confirmar a cobertura do seu plano.</p></div></div>
+          <summary>Aceita plano de saúde para consultas?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <div class="faq__body"><div><p>Não. As consultas são realizadas exclusivamente de forma particular.</p></div></div>
         </details>
 
         <details class="faq__item">
           <summary>O que devo levar na primeira consulta?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>Documento com foto, carteirinha do convênio quando houver, a lista das medicações que você usa e os exames anteriores — principalmente exames de imagem do tórax e provas de função pulmonar.</p></div></div>
+          <div class="faq__body"><div><p>Caso tenha exames, leve-os à consulta, especialmente aqueles relacionados à sua saúde respiratória. Tenha em mãos as informações sobre todos os medicamentos que utiliza. Se utiliza medicamentos inalatórios, leve também seu dispositivo inalatório.</p></div></div>
         </details>
 
         <details class="faq__item">
           <summary>Quando devo procurar um pneumologista?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>Procure avaliação diante de falta de ar, tosse que persiste por semanas, chiado no peito, ronco com pausas na respiração durante o sono, cansaço ao esforço ou infecções respiratórias de repetição.</p></div></div>
+          <div class="faq__body"><div><p>Se você tem falta de ar, cansaço aos esforços, tosse por mais de 3 semanas, chiado no peito, ronco com pausas na respiração ou infecções respiratórias de repetição, é hora de buscar avaliação com pneumologista.</p></div></div>
         </details>
 
         <details class="faq__item">
-          <summary>A espirometria é feita na própria consulta?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>A espirometria é solicitada quando há indicação clínica e realizada em serviço habilitado. Confirme com a secretaria a disponibilidade do exame na unidade em que você será atendido.</p></div></div>
-        </details>
-
-        <details class="faq__item">
-          <summary>Quanto tempo dura a consulta?<span class="faq__sign" aria-hidden="true"></span></summary>
-          <div class="faq__body"><div><p>A primeira consulta é mais longa, porque inclui a história clínica completa e o exame físico. O tempo varia conforme o caso e a necessidade de revisar exames já realizados.</p></div></div>
+          <summary>Como é a primeira consulta?<span class="faq__sign" aria-hidden="true"></span></summary>
+          <div class="faq__body"><div><p>Na primeira consulta, é realizada uma avaliação detalhada da sua história de saúde, dos seus sintomas e dos exames já realizados para definir a melhor abordagem para o seu caso.</p></div></div>
         </details>
       </div>
     </div>
@@ -553,12 +577,22 @@
   <section class="section cta" aria-labelledby="cta-titulo">
     <img class="cta__mark" src="assets/img/logo-pulmao-branco.svg" alt="" width="684" height="815" loading="lazy" aria-hidden="true">
     <div class="container cta__inner reveal">
-      <span class="kicker kicker--rule" style="justify-content:center">Agende sua consulta</span>
-      <h2 id="cta-titulo">Vamos cuidar da sua respiração</h2>
-      <p>Fale com a secretaria pelo WhatsApp e escolha o horário na unidade mais conveniente.</p>
-      <a class="btn btn--light" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener">
-        <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar pelo WhatsApp
-      </a>
+      <h2 id="cta-titulo">Agende sua consulta</h2>
+      <p>Escolha a clínica onde deseja agendar sua consulta:</p>
+      <div class="cta__choices">
+        <div class="cta__choice">
+          <h3>Clínicas Premium</h3>
+          <a class="btn btn--light" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20Cl%C3%ADnicas%20Premium." target="_blank" rel="noopener">
+            <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar pelo WhatsApp
+          </a>
+        </div>
+        <div class="cta__choice">
+          <h3>Itórax</h3>
+          <a class="btn btn--light" href="https://wa.me/5598991557793?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20It%C3%B3rax." target="_blank" rel="noopener">
+            <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar pelo WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -585,7 +619,7 @@
           <li><span>Clínicas Premium</span></li>
           <li><a href="tel:+559821069900"><svg class="ico" aria-hidden="true"><use href="#i-tel"></use></svg>(98) 2106-9900</a></li>
           <li><a href="https://wa.me/5598992407110" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>(98) 99240-7110</a></li>
-          <li style="margin-top:.6rem"><span>Itorax</span></li>
+          <li style="margin-top:.6rem"><span>Itórax</span></li>
           <li><a href="tel:+559830139696"><svg class="ico" aria-hidden="true"><use href="#i-tel"></use></svg>(98) 3013-9696</a></li>
           <li><a href="https://wa.me/5598991557793" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>(98) 99155-7793</a></li>
         </ul>
@@ -611,9 +645,25 @@
   </div>
 </footer>
 
-<a class="fab" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener" aria-label="Agendar consulta pelo WhatsApp">
+<a class="fab" data-wa-open href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury." target="_blank" rel="noopener" aria-label="Agendar consulta pelo WhatsApp">
   <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Agendar
 </a>
+
+<div class="wa-picker" id="wa-picker" hidden>
+  <div class="wa-picker__backdrop" data-wa-close></div>
+  <div class="wa-picker__panel" role="dialog" aria-modal="true" aria-labelledby="wa-picker-title">
+    <button type="button" class="wa-picker__close" data-wa-close aria-label="Fechar">
+      <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <p id="wa-picker-title">Escolha a clínica para agendar pelo WhatsApp</p>
+    <a class="btn btn--primary btn--block" href="https://wa.me/5598992407110?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20Cl%C3%ADnicas%20Premium." target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Clínicas Premium
+    </a>
+    <a class="btn btn--primary btn--block" href="https://wa.me/5598991557793?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Lorena%20Fecury%20na%20It%C3%B3rax." target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Itórax
+    </a>
+  </div>
+</div>
 
 <script src="assets/js/main.js" defer></script>
 </body>

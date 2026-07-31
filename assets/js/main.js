@@ -126,6 +126,48 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     5. Popover "escolha a clínica" — abre nos botões genéricos de
+     WhatsApp (nav mobile, header__cta, hero, fab), que por padrão
+     levam à Premium; o link original funciona normalmente sem JS.
+     ------------------------------------------------------------------ */
+  var waButtons = document.querySelectorAll('[data-wa-open]');
+  var waPicker = document.getElementById('wa-picker');
+
+  if (waButtons.length && waPicker) {
+    var waLastFocused = null;
+
+    function openWaPicker(e) {
+      e.preventDefault();
+      waLastFocused = e.currentTarget;
+      waPicker.hidden = false;
+      document.addEventListener('keydown', onWaKeydown);
+      var firstLink = waPicker.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
+
+    function closeWaPicker() {
+      waPicker.hidden = true;
+      document.removeEventListener('keydown', onWaKeydown);
+      if (waLastFocused) waLastFocused.focus();
+    }
+
+    function onWaKeydown(e) {
+      if (e.key === 'Escape') closeWaPicker();
+    }
+
+    Array.prototype.forEach.call(waButtons, function (btn) {
+      btn.addEventListener('click', openWaPicker);
+    });
+
+    Array.prototype.forEach.call(
+      waPicker.querySelectorAll('[data-wa-close]'),
+      function (el) {
+        el.addEventListener('click', closeWaPicker);
+      }
+    );
+  }
+
   /* Nota: o comprimento do traço de cada ícone (--len, usado pelo redesenho no
      hover) está fixado no HTML. Medir em runtime com getTotalLength() forçava
      um layout sincrono de ~50 ms logo após o parse. Ao alterar o `d` de um
