@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Template do favicon raster. Não é publicado: serve para gerar os PNGs que
+     são empacotados em /favicon.ico — o ícone que o Google usa nos resultados
+     de busca e que os navegadores antigos usam na aba.
+
+     Mesma arte do apple-touch-icon (marca branca sobre navy), porque a linha
+     fina do favicon.svg antialiasa para um borrão cinza a 16px. O favicon.svg
+     continua sendo o ícone da aba nos navegadores modernos.
+
+     Como regerar (com o servidor local no ar), para cada tamanho 16/32/48/96:
+       chrome --headless --hide-scrollbars --force-device-scale-factor=1 \
+              --window-size=48,48 --screenshot=fav-48.png \
+              http://127.0.0.1:8080/assets/img/_favicon-template.html
+     Depois empacote os quatro PNGs com tools/make-favicon-ico.py -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Favicon</title>
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background: #163b5c;
+  }
+  img { height: 69%; }
+</style>
+</head>
+<body><img src="logo-pulmao-branco.svg" alt=""></body>
+</html>

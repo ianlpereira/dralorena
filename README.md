@@ -20,9 +20,15 @@ assets/css/style.css             tokens, layout e animações
 assets/js/main.js                header, menu mobile, reveal on scroll, scroll spy
 assets/fonts/lora-latin-var.woff2  Lora variável (400–600), subset latin
 assets/img/logo-pulmao*.svg      marca (navy e branca), gerada do Figma
-assets/img/favicon.svg           favicon vetorial
+assets/img/favicon.svg           favicon vetorial (ícone da aba)
+favicon.ico                      raster 16/32/48/96 — o que o Google usa na busca
+tools/make-favicon-ico.py        empacota os PNGs no .ico (stdlib, sem deps)
 robots.txt · sitemap.xml · site.webmanifest
-CNAME · .nojekyll                domínio custom e opt-out do Jekyll (GitHub Pages)
+CNAME                            domínio custom (GitHub Pages)
+.nojekyll                        no-op no deploy atual: o workflow publica via
+                                 Actions, que não roda Jekyll. Fica só como
+                                 rede de segurança se um dia voltar a publicar
+                                 direto de um branch.
 ```
 
 ### Imagens
@@ -36,6 +42,29 @@ tipográfico, com o nome ocupando toda a largura.
 | `dra-lorena-original.jpeg` | o original enviado, 854×1280. Não é usado na página; fica como fonte para recortar de novo. Pode ficar fora do deploy. |
 | `og-image.jpg` | prévia em redes sociais, 1200×630 |
 | `apple-touch-icon.png` | ícone de tela inicial do iOS, 180×180 |
+| `favicon.svg` | ícone da aba nos navegadores modernos — marca navy sobre transparente |
+| `favicon.ico` (na raiz) | raster 16/32/48/96, marca branca sobre navy |
+
+### Os dois favicons
+
+O `favicon.svg` continua sendo o ícone da aba. O `favicon.ico` existe porque a
+linha fina da marca antialiasa para um borrão cinza a 16px — tamanho em que o
+Google exibe o favicon nos resultados de busca. A arte do `.ico` é a mesma do
+`apple-touch-icon`: marca branca sobre navy, que a esse tamanho ainda lê como um
+bloco sólido da cor da marca.
+
+O `sizes="32x32"` no `<link>` do `.ico` é o que faz os navegadores modernos
+preferirem o SVG. Sem ele, alguns escolheriam o raster.
+
+Para regerar: renderize `assets/img/_favicon-template.html` no Chrome headless
+nos quatro tamanhos (instruções no topo do arquivo) e rode
+
+```bash
+python tools/make-favicon-ico.py fav-16.png fav-32.png fav-48.png fav-96.png
+```
+
+O 96px precisa de `--force-device-scale-factor=2` com `--window-size=48,48`: em
+janela de 96px o Chrome headless às vezes captura antes do SVG carregar.
 
 O recorte 4:5 é exatamente o que o `object-fit: cover` já exibia — cortar na
 origem só evita baixar pixels que seriam descartados.
