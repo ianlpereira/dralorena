@@ -22,6 +22,7 @@ assets/fonts/lora-latin-var.woff2  Lora variável (400–600), subset latin
 assets/img/logo-pulmao*.svg      marca (navy e branca), gerada do Figma
 assets/img/favicon.svg           favicon vetorial
 robots.txt · sitemap.xml · site.webmanifest
+CNAME · .nojekyll                domínio custom e opt-out do Jekyll (GitHub Pages)
 ```
 
 ### Imagens
@@ -166,9 +167,9 @@ Vale uma revisão final da médica antes de publicar.
    `<!-- PENDENTE -->` e hoje traz só os telefones.
 3. **Revisar as áreas de atuação** — a lista atual é a pauta clássica de
    pneumologia adulta e deve ser ajustada ao que ela realmente atende.
-4. **Domínio.** Hoje está `https://www.dralorenafecury.com.br/` em três lugares:
-   `index.html` (canonical, Open Graph, JSON-LD), `robots.txt` e `sitemap.xml`.
-   Trocar em todos ao definir o domínio real.
+4. ~~**Domínio.**~~ Resolvido: `www.dralorenafecury.com.br` está no ar e fixado
+   no `CNAME`. Se um dia mudar, trocar em `index.html` (canonical, Open Graph,
+   JSON-LD), `robots.txt`, `sitemap.xml` e `CNAME`.
 5. **CTA principal.** O botão do hero, o flutuante e o CTA final apontam para o
    WhatsApp das **Clínicas Premium** ((98) 99240-7110), por ser a unidade com
    endereço completo no guia. Confirmar se é a unidade preferida para o primeiro

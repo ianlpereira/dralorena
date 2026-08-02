@@ -619,6 +619,14 @@ ol {
   pointer-events: none;
 }
 
+/* O `h1` agrupa o kicker e o nome, para que o texto do título carregue a
+   especialidade — e não só a marca. Não é uma caixa visual própria: o corpo
+   tipográfico segue calibrado em `.hero__title`, e o `line-height: inherit`
+   devolve ao kicker a entrelinha de corpo que ele tinha fora do h1. */
+.hero__h1 {
+  line-height: inherit;
+}
+
 /* O nome ocupa toda a largura útil em UMA linha.
    Calibrado com a métrica real de "Dra. Lorena Fecury" em Lora: a caixa de
    texto mede ≈8.75× o corpo da fonte. O caso mais apertado é 320px de viewport
@@ -628,6 +636,7 @@ ol {
    `white-space: nowrap` garante o requisito de não quebrar mesmo enquanto a
    fonte de fallback está em uso — e, por não mudar de altura, preserva o CLS. */
 .hero__title {
+  display: block;
   font-size: clamp(1.85rem, 9.6vw, 7.6rem);
   line-height: 1.02;
   margin-bottom: 1.4rem;
@@ -755,9 +764,6 @@ ol {
 }
 .hero__reveal > *:nth-child(4) {
   animation-delay: 0.32s;
-}
-.hero__reveal > *:nth-child(5) {
-  animation-delay: 0.41s;
 }
 
 @keyframes hero-in {
